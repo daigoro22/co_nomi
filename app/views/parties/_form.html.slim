@@ -1,0 +1,12 @@
+= form_with model: party, url: parties_new_url, local: true do|f|
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: 'form-control', id: 'party_name'
+
+  .form-group
+    = f.label :date
+    = f.datetime_local_field :date, class: 'form-control', id: 'party_date'
+
+    
+  = f.submit nil, class: 'btn btn-primary'
