@@ -8,5 +8,9 @@
     = f.label :date
     = f.datetime_local_field :date, class: 'form-control', id: 'party_date'
 
-    
+  .form-group
+      = f.fields_for :station, party.station do |station|
+        = station.label :name
+        = station.text_field :name
+
   = f.submit nil, class: 'btn btn-primary'
