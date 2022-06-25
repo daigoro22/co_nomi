@@ -10,12 +10,18 @@ main.d-flex.justify-content-center
         .form-group
           = f.label :date
           = f.datetime_local_field :date, class: 'form-control', id: 'party_date'
-        .row
-          .col-md-8
-            = f.fields_for :station, party.station do |station|
+
+        .form-group.pt-4
+          = f.fields_for :station, party.station do |station|
               = station.label :name
-              = station.text_field :name, class: 'form-control', id: 'station-name'
-          .col.md-1.pt-4
-            button#btn-search.form-control.btn.btn-secondary 検索
+              .row.pt-4
+                .col-md-8
+                  input#station-name.form-control type="txt" placeholder="駅名を検索"
+                .col.md-1
+                  button#btn-search.form-control.btn.btn-secondary 検索
+              = station.hidden_field :name, id: "hid_station_name"
+              = station.hidden_field :lat, id: "hid_station_lat"
+              = station.hidden_field :lng, id: "hid_station_lng"
+
         .form-group.pt-4
           = f.submit nil, class: 'btn btn-primary w-100'
