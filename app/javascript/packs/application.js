@@ -14,3 +14,11 @@ ActiveStorage.start();
 
 import "bootstrap";
 import "../stylesheets/application";
+
+window.addEventListener("load", () => {
+  const button = document.querySelector("#btn-search");
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log("push");
+  });
+});

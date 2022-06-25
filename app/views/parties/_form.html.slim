@@ -16,6 +16,6 @@ main.d-flex.justify-content-center
               = station.label :name
               = station.text_field :name, class: 'form-control', id: 'station_name'
           .col.md-1.pt-4
-            button.form-control.btn.btn-secondary 検索
+            button#btn-search.form-control.btn.btn-secondary 検索
         .form-group.pt-4
           = f.submit nil, class: 'btn btn-primary w-100'
