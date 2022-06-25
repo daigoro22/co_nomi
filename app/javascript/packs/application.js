@@ -17,8 +17,17 @@ import "../stylesheets/application";
 
 window.addEventListener("load", () => {
   const button = document.querySelector("#btn-search");
-  button.addEventListener("click", (event) => {
+  const stationName = document.querySelector("#station-name");
+
+  button.addEventListener("click", async (event) => {
     event.preventDefault();
-    console.log("push");
+    const query = new URLSearchParams({
+      name: stationName.value,
+    });
+    const response = await fetch(
+      `http://express.heartrails.com/api/json?method=getStations&${query}`
+    );
+    const data = await response.json();
+    console.log(data);
   });
 });
