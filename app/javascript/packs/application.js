@@ -30,7 +30,7 @@ function log(e) {
 }
 //TODO: 駅名検索系のコードは分割
 //TODO; hidden タグに駅情報をセット
-window.addEventListener("load", () => {
+window.addEventListener("turbolinks:load", () => {
   const button = document.querySelector("#btn-search");
   const stationName = document.querySelector("#station-name");
   const stationRadioContainer = document.querySelector("#radio-container");
