@@ -28,12 +28,15 @@ const fetchStationInfo = async (name) => {
 function log(e) {
   console.log(e);
 }
-
+//TODO: 駅名検索系のコードは分割
+//TODO; hidden タグに駅情報をセット
 window.addEventListener("load", () => {
   const button = document.querySelector("#btn-search");
   const stationName = document.querySelector("#station-name");
   const stationRadioContainer = document.querySelector("#radio-container");
-
+  const stationNameHidden = document.querySelector("#station-name-hidden");
+  const stationLatHidden = document.querySelector("#station-lat-hidden");
+  const stationLngHidden = document.querySelector("#station-lng-hidden");
   button.addEventListener("click", async (event) => {
     event.preventDefault();
     const data = await fetchStationInfo(stationName.value);
@@ -41,9 +44,13 @@ window.addEventListener("load", () => {
 
     const stations = data.response.station;
 
+    // ラジオボタンがチェックされたときに発火する関数
     const onStationNameChange = (event) => {
       const info = stations[event.target.value];
-      console.log(info);
+      console.log(stationNameHidden);
+      stationNameHidden.value = info.name;
+      stationLngHidden.value = info.x;
+      stationLatHidden.value = info.y;
     };
 
     // ラジオボタンのコンテナ内の要素を削除

@@ -18,7 +18,7 @@ class PartiesController < ApplicationController
     @party.build_station
   end
 
-  def create
+  def create # TODO: 同じ駅の情報でもStation のデータベースが増えてしまうので、駅名+路線のハッシュをPKにする
     @party = Party.new(party_params)
     if @party.save
       redirect_to parties_url, notice: "飲み会「#{@party.name}」を登録しました"
@@ -30,7 +30,7 @@ class PartiesController < ApplicationController
   private
 
   def party_params
-    params.require(:party).permit(:name, :date)
+    params.require(:party).permit(:name, :date, station_attributes: [:name, :lat, :lng])
   end
 
   def set_party

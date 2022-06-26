@@ -18,10 +18,10 @@ main.d-flex.justify-content-center
                 .col-md-8
                   input#station-name.form-control type="txt" placeholder="駅名を検索"
                 .col.md-1
-                  button#btn-search.form-control.btn.btn-secondary 検索
-              = station.hidden_field :name, id: "hid_station_name"
-              = station.hidden_field :lat, id: "hid_station_lat"
-              = station.hidden_field :lng, id: "hid_station_lng"
+                  button#btn-search.form-control.btn.btn-secondary type='button' 検索
+              = station.hidden_field :name, id: "station-name-hidden"
+              = station.hidden_field :lat, id: "station-lat-hidden"
+              = station.hidden_field :lng, id: "station-lng-hidden"
 
         #radio-container.form-group.pt-4.d-flex.flex-column
 
