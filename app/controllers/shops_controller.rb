@@ -1,8 +1,24 @@
+require 'httpclient'
+
 class ShopsController < ApplicationController
   def new
     party = Party.find(params[:party_id])
     lat = party.station.lat
     lng = party.station.lng
+
+    client = HTTPClient.new
+    query = {
+      key: ENV['HOTPEPPER_API_KEY'],
+      lat: lat,
+      lng: lng,
+      order: 4,
+      format: 'json'
+    }
+    uri = 'http://webservice.recruit.co.jp/hotpepper/gourmet/v1/'
+
+    res = client.get(uri,query)
+
+    print JSON.parse(res.body)
   end
 
   def create
