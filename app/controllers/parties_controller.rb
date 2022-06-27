@@ -27,6 +27,11 @@ class PartiesController < ApplicationController
     end
   end
 
+  def destroy
+    @party.destroy
+    redirect_to parties_url, notice: "飲み会「#{@party.name}」を削除しました"
+  end
+
   private
 
   def party_params
