@@ -18,7 +18,13 @@ class ShopsController < ApplicationController
 
     res = client.get(uri,query)
 
-    print JSON.parse(res.body)
+    res_h = JSON.parse(res.body,symbolize_names: true)
+
+    res_h[:results][:shop].each do |result|
+      shop_h = Shop.column_names.map {|x| [x,result[x]]}.to_h
+
+      print res_h
+    end
   end
 
   def create
