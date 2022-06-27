@@ -25,9 +25,6 @@ const fetchStationInfo = async (name) => {
   return await response.json();
 };
 
-function log(e) {
-  console.log(e);
-}
 //TODO: 駅名検索系のコードは分割
 //TODO; hidden タグに駅情報をセット
 window.addEventListener("turbolinks:load", () => {
@@ -37,10 +34,12 @@ window.addEventListener("turbolinks:load", () => {
   const stationNameHidden = document.querySelector("#station-name-hidden");
   const stationLatHidden = document.querySelector("#station-lat-hidden");
   const stationLngHidden = document.querySelector("#station-lng-hidden");
+
+  stationName.value = stationNameHidden.value;
+
   button.addEventListener("click", async (event) => {
     event.preventDefault();
     const data = await fetchStationInfo(stationName.value);
-    console.log(data);
 
     const stations = data.response.station;
 
