@@ -1,4 +1,10 @@
 class ShopsController < ApplicationController
+  def new
+    party = Party.find(params[:party_id])
+    lat = party.station.lat
+    lng = party.station.lng
+  end
+
   def create
     @shop = Shop.new(shop_params)
     @shop.save
